@@ -8,7 +8,6 @@ import lombok.*;
 public class Category {
     @Getter
     @EqualsAndHashCode.Include
-    @NonNull
     private int id;
     @Getter
     @Setter
