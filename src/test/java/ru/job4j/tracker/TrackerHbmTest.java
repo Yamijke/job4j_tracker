@@ -4,9 +4,7 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.hamcrest.Matchers.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TrackerHbmTest {
     @Test
@@ -16,7 +14,7 @@ public class TrackerHbmTest {
             item.setName("test1");
             tracker.add(item);
             Item result = tracker.findById(item.getId());
-            assertThat(result.getName(), is(item.getName()));
+            assertThat(result.getName()).isEqualTo(item.getName());
         }
     }
 
@@ -29,7 +27,7 @@ public class TrackerHbmTest {
             tracker.add(item);
             tracker.replace(item.getId(), item2);
             Item result = tracker.findById(item2.getId());
-            assertThat(result.getName(), is(item2.getName()));
+            assertThat(result.getName()).isEqualTo(item2.getName());
         }
     }
 
@@ -40,7 +38,7 @@ public class TrackerHbmTest {
             item.setName("test1");
             tracker.add(item);
             List<Item> result = tracker.findByName("test1");
-            assertThat(result, hasItem(item));
+            assertThat(result).contains(item);
         }
     }
 }
